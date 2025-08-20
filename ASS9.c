@@ -47,25 +47,92 @@ int bai4(int x, int y){
     }
     return kq;
 }
+
+int bai5(int x){
+    int kq = 0;
+    while(x > 0){
+        kq = kq * 10 + x%10;
+        x/=10;
+    }
+    return kq;
+}
+
+int bai6(int x){
+    int kq = 0;
+    while(x > 0){
+        kq += x%10;
+        x/=10;
+    }
+    return kq;
+}
+
+int bai7(int arr[], int size){
+    int max = arr[0];
+    for(int i = 1; i<size;i++){
+        if(arr[i] > max){
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+int bai8(int arr[], int size){
+    int min = arr[0];
+    for(int i = 1; i<size;i++){
+        if(arr[i] < min){
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
+void bai9(int x[], int size){
+    for(int i = 0; i<size;i++){
+        for(int j = 0; j<size-i-1;j++){
+            if(x[j] > x[j+1]){
+                int temp = x[j+1];
+                x[j+1] = x[j];
+                x[j] = temp;
+            }
+        }
+    }
+}
+
+void bai10(int x[], int size){
+    int start = 0;
+    int end = size-1;
+    while(start < end){
+        int temp = x[start];
+        x[start] = x[end];
+        x[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+
+
 int main() {
-    int n, a, b, x, y;
+    int arr[5] = {5, 2, 9, 1, 7};
+    int n = 12345;
 
-    // Bài 1
-    printf("Nhap n: ");
-    scanf("%d", &n);
-    printf("Tong cac chu so = %d\n", bai1(n));
+    printf("Bai 1 - Tong chu so: %d\n", bai1(n));
+    printf("Bai 2 - UCLN(12, 18): %d\n", bai2(12, 18));
+    printf("Bai 3 - BCNN(12, 18): %d\n", bai3(12, 18));
+    printf("Bai 4 - 2^5: %d\n", bai4(2, 5));
+    printf("Bai 5 - Dao so 12345: %d\n", bai5(n));
+    printf("Bai 7 - Max trong mang: %d\n", bai7(arr, 5));
+    printf("Bai 8 - Min trong mang: %d\n", bai8(arr, 5));
 
-    // Bài 2
-    printf("Nhap a, b: ");
-    scanf("%d %d", &a, &b);
-    printf("UCLN = %d\n", bai2(a, b));
+    bai9(arr, 5);
+    printf("Bai 9 - Mang sau khi sap xep: ");
+    for(int i=0; i<5; i++) printf("%d ", arr[i]);
+    printf("\n");
 
-    // Bài 3
-    printf("BCNN = %d\n", bai3(a, b));
-
-    // Bài 4
-    printf("Nhap x, y: ");
-    scanf("%d %d", &x, &y);
-    printf("%d^%d = %d\n", x, y, bai4(x, y));
+    bai10(arr, 5);
+    printf("Bai 10 - Mang dao nguoc: ");
+    for(int i=0; i<5; i++) printf("%d ", arr[i]);
+    printf("\n");
+    
     return 0;
 }
